@@ -28,7 +28,7 @@ async def on_user_joined(message: types.Message):
 
 
 # ban command (admins only)
-@dp.message_handlers(is_admin=True, commands=["ban"], commands_prefix="!/")
+@dp.message_handler(is_admin=True, commands=["ban"], commands_prefix="!/")
 async def cmd_ban(message: types.Message):
     if not message.reply_to_message:
         await message.reply("Нецензурная лексика запрещена правилами Группы")
@@ -37,9 +37,11 @@ async def cmd_ban(message: types.Message):
     await message.bot.kick_chat_member(chat_id=config.GROUP_ID, user_id=message.reply_to_message)
     await message.reply_to_message.reply("Пользователь забанен!")
 
+
 def print_hi(name):
     # Use a breakpoint in the code line below to debug your script.
     print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+
 
 # Press the green button in the gutter to run the script.
 # if __name__ == '__main__':
