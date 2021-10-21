@@ -16,7 +16,7 @@ dp.filters_factory.bind(IsAdminFilter)
 
 
 # echo
-@dp.message_handlers()
+@dp.message_handler()
 async def echo(message: types.Message):
     await message.answer(message.text)
 
