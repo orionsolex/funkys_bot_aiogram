@@ -1,10 +1,5 @@
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
 import config
 import logging
-import telebot
 
 from filters import IsAdminFilter
 from aiogram import Bot, Dispatcher, executor, types
@@ -14,16 +9,16 @@ logging.basicConfig(level=logging.INFO)
 
 # bot init
 bot = Bot(token=config.BOT_TOKEN)
-dp = Dispatcher(bot)  # обработчик событий
+dp = Dispatcher(bot)
 
 # activate filters
 dp.filters_factory.bind(IsAdminFilter)
 
 
 # echo
-@dp.message_handlers()  # вызываем обработчик
-async def echo(message: types.Message):  # описываем ассинх функцию инициализируем переменную message
-    await message.answer(message.text)  # отвечаем ботом не блокируя поток
+@dp.message_handlers()
+async def echo(message: types.Message):
+    await message.answer(message.text)
 
 
 # remove new user joined messages
